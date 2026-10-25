@@ -1,0 +1,42 @@
+{
+  "project": {
+    "name": "MyGame",
+    "evidence_banner": "UNRESTORED EVIDENCE"
+  },
+  "input": {
+    "apk": "work/input/game.apk",
+    "libil2cpp": "work/input/arm64-v8a/libil2cpp.so",
+    "metadata": "work/input/metadata/global-metadata.dat"
+  },
+  "dump": {
+    "tool": "il2cppdumper",
+    "dump_cs": "dump/dump.cs",
+    "script_json": "dump/script.json",
+    "stringliteral_json": "dump/stringliteral.json",
+    "dummy_dll_dir": "dump/DummyDll",
+    "skeleton_src": ""
+  },
+  "native": {
+    "c_dir": "native/split-c",
+    "helper_file": "index/helpers.json",
+    "target_assemblies": ["Assembly-CSharp.dll", "MyGame.dll"],
+    "framework_prefixes": []
+  },
+  "source": {
+    "src_dir": "work/src"
+  },
+  "index": {
+    "dir": "index"
+  },
+  "build": {
+    "dotnet": "dotnet",
+    "target_framework": "netstandard2.1",
+    "exclude_references": ["Assembly-CSharp", "MyGame"]
+  },
+  "gates": {
+    "min_coverage": 0.6,
+    "max_syntax_errors": 0,
+    "check_residue": true,
+    "max_residue": 0
+  }
+}

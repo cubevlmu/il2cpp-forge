@@ -1,0 +1,25 @@
+# project artefacts
+index/
+cards/
+build/
+work/
+dump/
+native/
+*.evidence.json
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/lib/
+dist/
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# local validation scratch
+.validation/

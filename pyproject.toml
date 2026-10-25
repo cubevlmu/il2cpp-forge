@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "il2cpp-forge"
+version = "1.0.0"
+description = "AI-native, evidence-gated reconstruction toolkit for Unity IL2CPP assemblies"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "il2cpp-forge contributors" }]
+keywords = [
+    "il2cpp",
+    "unity",
+    "reverse-engineering",
+    "decompilation",
+    "csharp",
+    "il2cppdumper",
+    "ghidra",
+    "ida",
+]
+dependencies = []
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Disassemblers",
+    "Typing :: Typed",
+]
+
+# Fill these in once the repository exists; nothing reads them at runtime, so a
+# placeholder is harmless until the first release.
+[project.urls]
+Homepage = "https://github.com/YOUR-NAME/il2cpp-forge"
+Issues = "https://github.com/YOUR-NAME/il2cpp-forge/issues"
+
+[project.scripts]
+il2cpp-forge = "forge.cli:main"
+forge = "forge.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["forge*"]
+
+[tool.setuptools.package-data]
+# The restore/audit contracts are read when a card is built, not at import time.
+forge = ["prompts/*.md"]
