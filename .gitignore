@@ -1,10 +1,13 @@
-# project artefacts
-index/
-cards/
-build/
-work/
-dump/
-native/
+# Local project configuration and generated artifacts (repository root only)
+/forge.json
+/il2cpp-forge.json
+/.il2cpp-forge.json
+/index/
+/cards/
+/build/
+/work/
+/dump/
+/native/
 *.evidence.json
 
 # python

@@ -37,12 +37,6 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-# Fill these in once the repository exists; nothing reads them at runtime, so a
-# placeholder is harmless until the first release.
-[project.urls]
-Homepage = "https://github.com/YOUR-NAME/il2cpp-forge"
-Issues = "https://github.com/YOUR-NAME/il2cpp-forge/issues"
-
 [project.scripts]
 il2cpp-forge = "forge.cli:main"
 forge = "forge.cli:main"

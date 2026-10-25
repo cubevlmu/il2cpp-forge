@@ -562,6 +562,12 @@ def cmd_build(args: argparse.Namespace) -> int:
         residue=payload["residue"] if config.get("gates.check_residue", True) else None,
         max_residue=config.get("gates.max_residue", 0),
     )
+    # A missing/timed-out compiler cannot provide a meaningful syntax gate.
+    # Other nonzero exit codes may be expected semantic diagnostics, which this
+    # deliberately limited gate does not consider on their own.
+    if result.exit_code in (124, 127):
+        passed = False
+        reasons.append(f"compiler unavailable or timed out (exit {result.exit_code})")
     if not args.json:
         print("gate           : " + ("pass" if passed else "fail — " + "; ".join(reasons)))
     return 0 if passed or args.no_gate else 1

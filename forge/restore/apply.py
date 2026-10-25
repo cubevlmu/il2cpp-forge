@@ -87,6 +87,7 @@ def apply_patch(
 ) -> ApplyResult:
     patch_path = Path(patch_path)
     src_dir = Path(src_dir)
+    source_root = src_dir.resolve()
     entries = json.loads(patch_path.read_text(encoding="utf-8-sig"))
     if isinstance(entries, dict):
         entries = entries.get("entries", [])
@@ -100,7 +101,11 @@ def apply_patch(
     evidence_snapshot: List[dict] = []
 
     for relative, file_entries in by_file.items():
-        path = src_dir / relative
+        path = (src_dir / relative).resolve()
+        if not path.is_relative_to(source_root):
+            result.problems.append(f"INVALID_PATH {relative}")
+            result.skipped += len(file_entries)
+            continue
         if not path.is_file():
             result.problems.append(f"FILE_MISSING {relative}")
             result.skipped += len(file_entries)
